@@ -226,12 +226,26 @@
       animation-fill-mode: both;
     }
     
+    .header-location {
+      display: inline-block;
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+      opacity: 0.9;
+      animation: fadeInUp 1s ease-out 0.3s;
+      animation-fill-mode: both;
+    }
+    
+    .header-location i {
+      margin-right: 0.5rem;
+      color: rgba(255,255,255,0.8);
+    }
+    
     .header-skills {
       display: inline-block;
       background: rgba(255,255,255,0.15);
       padding: 0.7rem 1.5rem;
       border-radius: 30px;
-      margin-top: 1rem;
+      margin-top: 0.5rem;
       backdrop-filter: blur(5px);
       animation: fadeInUp 1s ease-out 0.4s;
       animation-fill-mode: both;
@@ -629,6 +643,72 @@
       margin-bottom: 0.5rem;
     }
     
+    /* Achievements Section */
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .achievement-card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .achievement-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient-1);
+    }
+    
+    .achievement-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .achievement-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
+      border-radius: 50%;
+      background: rgba(37, 99, 235, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .achievement-card:hover .achievement-icon {
+      background: var(--primary);
+      color: white;
+      transform: rotateY(360deg);
+      transition: transform 0.8s ease, background 0.3s ease, color 0.3s ease;
+    }
+    
+    .achievement-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+    
+    .achievement-card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    
     /* Contact Section */
     .contact-content {
       display: grid;
@@ -926,6 +1006,8 @@
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#resume">Resume</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="mobile-menu-btn" aria-label="Toggle menu">
@@ -940,6 +1022,7 @@
       <img src="profile.jpg" alt="Sahith Jangiti" class="profile-pic">
       <h1>Sahith Jangiti</h1>
       <p>Azure Data Engineer</p>
+      <div class="header-location"><i class="fas fa-map-marker-alt"></i> Bangalore, India</div>
       <div class="header-skills">PySpark | ADF | Databricks | SQL | Power BI</div>
       <div class="cta-buttons">
         <a href="#contact" class="btn btn-primary"><i class="fas fa-envelope"></i> Contact Me</a>
@@ -960,8 +1043,9 @@
       </div>
       <div class="about-content" data-aos="fade-up" data-aos-delay="200">
         <div class="about-text">
-          <p>I'm an <strong>Azure Data Engineer</strong> with 3.6+ years of experience building scalable data pipelines using Azure Data Factory, Databricks, PySpark, and SQL. I'm passionate about transforming raw data into business insights and have worked on enterprise-scale projects for Flipkart.</p>
-          <p>My expertise lies in designing and implementing efficient ETL processes, optimizing data workflows, and creating robust data architectures that drive business decisions.</p>
+          <p>I'm an <strong>Azure Data Engineer</strong> with 3.6 years of experience in designing and delivering end-to-end data analytics solutions. I have proven expertise in data ingestion, ETL pipeline development, and large-scale data processing using PySpark and Spark DataFrames.</p>
+          <p>My skills include building scalable, reliable, and automated data workflows using the Microsoft Azure ecosystem, including Azure Data Factory, Azure Data Lake, Databricks, and Power BI. I'm adept at optimizing data pipelines, implementing CI/CD practices, and collaborating with cross-functional teams to deliver business-critical insights.</p>
+          <p>Currently based in Bangalore, I'm working with Flipkart to transform raw data into actionable business intelligence that drives strategic decisions.</p>
           <div class="about-highlights">
             <div class="highlight-item">
               <i class="fas fa-database"></i>
@@ -970,7 +1054,7 @@
             </div>
             <div class="highlight-item">
               <i class="fas fa-project-diagram"></i>
-              <h3>6+</h3>
+              <h3>15+</h3>
               <p>Projects Completed</p>
             </div>
             <div class="highlight-item">
@@ -994,15 +1078,65 @@
       <div class="skills-content">
         <div class="skills-categories" data-aos="fade-up" data-aos-delay="200">
           <div class="skill-category">
-            <h3><i class="fas fa-code"></i> Languages</h3>
+            <h3><i class="fas fa-database"></i> Big Data Technologies</h3>
             <div class="skills-list">
               <div class="skill-item">
                 <div class="skill-info">
-                  <span>Python</span>
+                  <span>Apache Spark</span>
+                  <span>95%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 95%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Data Modeling</span>
                   <span>90%</span>
                 </div>
                 <div class="skill-bar">
                   <div class="skill-level" style="width: 90%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Data Warehousing</span>
+                  <span>85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Delta Lake</span>
+                  <span>90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 90%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Data Migration</span>
+                  <span>90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 90%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3><i class="fas fa-code"></i> Programming</h3>
+            <div class="skills-list">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Python</span>
+                  <span>95%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 95%"></div>
                 </div>
               </div>
               <div class="skill-item">
@@ -1016,7 +1150,7 @@
               </div>
               <div class="skill-item">
                 <div class="skill-info">
-                  <span>T-SQL</span>
+                  <span>PL/SQL</span>
                   <span>85%</span>
                 </div>
                 <div class="skill-bar">
@@ -1026,7 +1160,7 @@
             </div>
           </div>
           <div class="skill-category">
-            <h3><i class="fas fa-cloud"></i> Cloud</h3>
+            <h3><i class="fas fa-cloud"></i> Cloud Services</h3>
             <div class="skills-list">
               <div class="skill-item">
                 <div class="skill-info">
@@ -1040,6 +1174,15 @@
               <div class="skill-item">
                 <div class="skill-info">
                   <span>Azure Databricks</span>
+                  <span>95%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 95%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Azure Storage & ADLS</span>
                   <span>90%</span>
                 </div>
                 <div class="skill-bar">
@@ -1048,30 +1191,16 @@
               </div>
               <div class="skill-item">
                 <div class="skill-info">
-                  <span>Azure Synapse</span>
-                  <span>80%</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-level" style="width: 80%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span>ADLS</span>
+                  <span>Azure Synapse Analytics</span>
                   <span>85%</span>
                 </div>
                 <div class="skill-bar">
                   <div class="skill-level" style="width: 85%"></div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="skill-category">
-            <h3><i class="fas fa-database"></i> Big Data</h3>
-            <div class="skills-list">
               <div class="skill-item">
                 <div class="skill-info">
-                  <span>PySpark</span>
+                  <span>Azure SQL Databases</span>
                   <span>90%</span>
                 </div>
                 <div class="skill-bar">
@@ -1080,16 +1209,7 @@
               </div>
               <div class="skill-item">
                 <div class="skill-info">
-                  <span>Delta Lake</span>
-                  <span>85%</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-level" style="width: 85%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span>OLAP</span>
+                  <span>Azure Logic Apps</span>
                   <span>80%</span>
                 </div>
                 <div class="skill-bar">
@@ -1099,15 +1219,15 @@
             </div>
           </div>
           <div class="skill-category">
-            <h3><i class="fas fa-tools"></i> Other Skills</h3>
+            <h3><i class="fas fa-chart-bar"></i> Other Skills</h3>
             <div class="skills-list">
               <div class="skill-item">
                 <div class="skill-info">
-                  <span>Git & Azure DevOps</span>
-                  <span>85%</span>
+                  <span>PySpark & Spark SQL</span>
+                  <span>95%</span>
                 </div>
                 <div class="skill-bar">
-                  <div class="skill-level" style="width: 85%"></div>
+                  <div class="skill-level" style="width: 95%"></div>
                 </div>
               </div>
               <div class="skill-item">
@@ -1121,7 +1241,16 @@
               </div>
               <div class="skill-item">
                 <div class="skill-info">
-                  <span>Data Modeling</span>
+                  <span>Git & Azure DevOps</span>
+                  <span>85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Windows & Linux</span>
                   <span>85%</span>
                 </div>
                 <div class="skill-bar">
@@ -1213,29 +1342,198 @@
       <div class="timeline" data-aos="fade-up" data-aos-delay="200">
         <div class="timeline-item">
           <div class="timeline-dot"></div>
-          <div class="timeline-date">2021 - Present</div>
+          <div class="timeline-date">04/2022 - Present</div>
           <div class="timeline-content">
-            <h3>Senior Data Engineer</h3>
-            <h4>Flipkart</h4>
-            <p>Lead the development of data pipelines for B2B analytics platform, optimizing ETL processes and implementing best practices for data governance.</p>
+            <h3>Azure Data Engineer</h3>
+            <h4>Flipkart Ltd</h4>
+            <p><strong>Project #2: Analytics Platform for Flipkart Wholesale (Best Price)</strong> <em>(Aug 2023 - Present)</em></p>
+            <p><strong>Tech Stack:</strong> Azure Data Lake Storage Gen2, Azure Data Factory, Azure SQL DB, T-SQL, Azure Databricks, PySpark, Power BI, Azure Monitor, Git, Azure DevOps</p>
+            <p>Best Price is Flipkart's B2B platform catering to wholesale buyers across India. The objective was to build a robust and scalable analytics platform that could handle large volumes of transactional and operational data from wholesale stores.</p>
             <ul>
-              <li>Reduced data processing time by 40% through pipeline optimization</li>
-              <li>Implemented delta lake architecture for efficient data storage</li>
-              <li>Developed automated testing framework for data quality validation</li>
+              <li>Ingested raw data securely from on-premise/private networks into Azure Data Lake Storage Gen2 (ADLS Gen2) using Azure Data Factory</li>
+              <li>Transformed raw data using SQL and designed analytical views, fact, and dimension tables for reporting purposes</li>
+              <li>Utilized Azure Databricks (PySpark) for data validation, ad-hoc analysis, and performance tuning</li>
+              <li>Optimized long-running SQL stored procedures, improving performance from 2 hours down to 20 minutes</li>
+              <li>Built interactive Power BI dashboards to visualize key business KPIs across wholesale operations</li>
+              <li>Automated daily data refreshes and extract deliveries using ADF pipelines with email alerts</li>
+              <li>Implemented CI/CD pipelines with Azure DevOps, managing all pipeline and code deployments through Git integration</li>
+            </ul>
+            
+            <p class="mt-4"><strong>Project #1: Unified Data Platform (UDP) for Customer Service and Support (CSS)</strong> <em>(April 2022 - July 2023)</em></p>
+            <p><strong>Tech Stack:</strong> Azure Data Lake Storage Gen2, Azure Data Factory, Azure Databricks, PySpark, Delta Lake, Azure SQL DB, OLAP Cubes, Power BI, Git, Azure Monitor, Azure DevOps, Key Vault</p>
+            <p>The Unified Data Platform (UDP) is a centralized big data platform designed to consolidate Flipkart Customer Service and Support (CSS) data from multiple sources into a unified Azure-based system.</p>
+            <ul>
+              <li>Extracted large volumes of raw data from multiple enterprise applications and ingested into Azure Data Lake Storage Gen2 using ADF</li>
+              <li>Transformed datasets using PySpark on Azure Databricks to produce clean, structured Dimension and Fact Tables</li>
+              <li>Tuned and optimized PySpark notebooks, reducing pipeline execution time and improving cluster utilization</li>
+              <li>Loaded processed data into Data Marts and OLAP Cubes for downstream reporting</li>
+              <li>Interacted with end-users and business analysts to gather detailed requirements</li>
+              <li>Managed notebooks and pipeline versions through Git integration with Databricks</li>
             </ul>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-dot"></div>
-          <div class="timeline-date">2019 - 2021</div>
+          <div class="timeline-date">10/2021 - 03/2022</div>
           <div class="timeline-content">
-            <h3>Data Engineer</h3>
-            <h4>Tech Company</h4>
-            <p>Designed and implemented ETL processes using Azure Data Factory and Databricks, working with cross-functional teams to deliver data solutions.</p>
+            <h3>Data Analytics Intern</h3>
+            <h4>MK Corporate Sol, Bangalore</h4>
+            <p>Worked on data analytics projects to support business decision-making processes.</p>
             <ul>
-              <li>Built end-to-end data pipelines for customer analytics</li>
-              <li>Created Power BI dashboards for executive reporting</li>
-              <li>Collaborated with data science team on predictive models</li>
+              <li>Created scalable data models using SQL to analyze and monitor business performance</li>
+              <li>Developed interactive dashboards in Power BI and Tableau to visualize trends and KPIs</li>
+              <li>Automated data cleaning and transformation workflows using Pandas, reducing manual reporting time by 50% and improving accuracy</li>
+              <li>Performed exploratory data analysis (EDA) to uncover patterns and support data-driven decisions</li>
+              <li>Contributed to lightweight ETL pipeline development, improving data ingestion speed and reliability</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section id="achievements" class="section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2>Key Achievements</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="achievements-grid" data-aos="fade-up" data-aos-delay="200">
+        <div class="achievement-card">
+          <div class="achievement-icon">
+            <i class="fas fa-database"></i>
+          </div>
+          <h3>Data Migration Success</h3>
+          <p>Achieved 100% success rate in data migration with zero downtime from on-prem to Azure</p>
+        </div>
+        
+        <div class="achievement-card">
+          <div class="achievement-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3>SQL Optimization</h3>
+          <p>Reduced SQL procedure runtime from 2 hours to 20 minutes by optimizing queries and indexing</p>
+        </div>
+        
+        <div class="achievement-card">
+          <div class="achievement-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Stakeholder Engagement</h3>
+          <p>Increased stakeholder satisfaction by 15% through real-time Power BI dashboards</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resume Section -->
+  <section id="resume" class="section section-alt">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2>Resume</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="resume-container" data-aos="fade-up" data-aos-delay="200">
+        <div class="resume-download-btn">
+          <a href="resume.pdf" download class="btn btn-primary"><i class="fas fa-download"></i> Download Full Resume</a>
+        </div>
+        
+        <div class="resume-section">
+          <h3 class="resume-section-title"><i class="fas fa-user"></i> Profile</h3>
+          <div class="resume-content">
+            <p>Azure Data Engineer with 3.6 years of experience in designing and delivering end-to-end data analytics solutions. Proven expertise in data ingestion, ETL pipeline development, and large-scale data processing using PySpark and Spark DataFrames. Skilled in building scalable, reliable, and automated data workflows using the Microsoft Azure ecosystem, including Azure Data Factory, Azure Data Lake, Databricks, and Power BI. Adept at optimizing data pipelines, implementing CI/CD practices, and collaborating with cross-functional teams to deliver business-critical insights.</p>
+          </div>
+        </div>
+        
+        <div class="resume-section">
+          <h3 class="resume-section-title"><i class="fas fa-briefcase"></i> Work Experience</h3>
+          <div class="resume-content">
+            <div class="resume-item">
+              <div class="resume-item-header">
+                <h4>Azure Data Engineer</h4>
+                <div class="resume-item-meta">
+                  <span class="resume-company">Flipkart Ltd</span>
+                  <span class="resume-date">04/2022 – Present</span>
+                </div>
+              </div>
+              <div class="resume-item-body">
+                <h5>Project #2: Analytics Platform for Flipkart Wholesale (Best Price)</h5>
+                <p class="resume-item-period">Aug 2023 - Present</p>
+                <p class="resume-item-tech"><strong>Tech Stack:</strong> Azure Data Lake Storage Gen2, Azure Data Factory, Azure SQL DB, T-SQL, Azure Databricks, PySpark, Power BI, Azure Monitor, Git, Azure DevOps</p>
+                <p>Best Price is Flipkart's B2B platform catering to wholesale buyers across India. The objective of this project was to build a robust and scalable analytics platform that could handle large volumes of transactional and operational data from wholesale stores. The solution aimed to provide actionable insights to business stakeholders by leveraging the Microsoft Azure ecosystem for data ingestion, transformation, and reporting.</p>
+                <ul class="resume-item-list">
+                  <li>Ingested raw data securely from on-premise/private networks into Azure Data Lake Storage Gen2 (ADLS Gen2) using Azure Data Factory</li>
+                  <li>Transformed raw data using SQL and designed analytical views, fact, and dimension tables for reporting purposes</li>
+                  <li>Utilized Azure Databricks (PySpark) for data validation, ad-hoc analysis, and performance tuning during early stages of development</li>
+                  <li>Optimized long-running SQL stored procedures, improving performance from 2 hours down to 20 minutes</li>
+                  <li>Built interactive Power BI dashboards to visualize key business KPIs across wholesale operations</li>
+                  <li>Automated daily data refreshes and extract deliveries using ADF pipelines with email alerts</li>
+                  <li>Implemented CI/CD pipelines with Azure DevOps, managing all pipeline and code deployments through Git integration</li>
+                </ul>
+                
+                <h5>Project #1: Unified Data Platform (UDP) for Customer Service and Support (CSS)</h5>
+                <p class="resume-item-period">April 2022 - July 2023</p>
+                <p class="resume-item-tech"><strong>Tech Stack:</strong> Azure Data Lake Storage Gen2, Azure Data Factory, Azure Databricks, PySpark, Delta Lake, Azure SQL DB, OLAP Cubes, Power BI, Git, Azure Monitor, Azure DevOps, Key Vault</p>
+                <p>The Unified Data Platform (UDP) is a centralized big data platform designed to consolidate Flipkart Customer Service and Support (CSS) data from multiple sources into a unified Azure-based system. The platform supports advanced analytics, root cause analysis, and performance monitoring for internal support operations.</p>
+                <ul class="resume-item-list">
+                  <li>Extracted large volumes of raw data from multiple enterprise applications and ingested into Azure Data Lake Storage Gen2 using ADF</li>
+                  <li>Transformed datasets using PySpark on Azure Databricks to produce clean, structured Dimension and Fact Tables</li>
+                  <li>Tuned and optimized PySpark notebooks, reducing pipeline execution time and improving cluster utilization</li>
+                  <li>Loaded processed data into Data Marts and OLAP Cubes for downstream reporting</li>
+                  <li>Interacted with end-users and business analysts to gather detailed requirements and translate them into reusable metrics and dimensions</li>
+                  <li>Managed notebooks and pipeline versions through Git integration with Databricks and monitored job health using Azure Monitor and Log Analytics</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="resume-item">
+              <div class="resume-item-header">
+                <h4>Data Analytics Intern</h4>
+                <div class="resume-item-meta">
+                  <span class="resume-company">MK Corporate Sol</span>
+                  <span class="resume-date">10/2021 – 03/2022</span>
+                </div>
+              </div>
+              <div class="resume-item-body">
+                <p>Bangalore</p>
+                <ul class="resume-item-list">
+                  <li>Created scalable data models using SQL to analyze and monitor business performance</li>
+                  <li>Developed interactive dashboards in Power BI and Tableau to visualize trends and KPIs</li>
+                  <li>Automated data cleaning and transformation workflows using Pandas, reducing manual reporting time by 50% and improving accuracy</li>
+                  <li>Performed exploratory data analysis (EDA) to uncover patterns and support data-driven decisions</li>
+                  <li>Contributed to lightweight ETL pipeline development, improving data ingestion speed and reliability</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="resume-section">
+          <h3 class="resume-section-title"><i class="fas fa-graduation-cap"></i> Education</h3>
+          <div class="resume-content">
+            <div class="resume-item">
+              <div class="resume-item-header">
+                <h4>B-Tech (E.C.E)</h4>
+                <div class="resume-item-meta">
+                  <span class="resume-company">Vaagdevi Engineering College</span>
+                  <span class="resume-date">03/2022</span>
+                </div>
+              </div>
+              <div class="resume-item-body">
+                <p>Warangal, Telangana</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="resume-section">
+          <h3 class="resume-section-title"><i class="fas fa-trophy"></i> Key Achievements</h3>
+          <div class="resume-content">
+            <ul class="resume-item-list">
+              <li><strong>Data Migration Success:</strong> Achieved 100% success rate in data migration with zero downtime from on-prem to Azure</li>
+              <li><strong>SQL Optimization:</strong> Reduced SQL procedure runtime from 2 hours to 20 minutes by optimizing queries and indexing</li>
+              <li><strong>Stakeholder Engagement:</strong> Increased stakeholder satisfaction by 15% through real-time Power BI dashboards</li>
             </ul>
           </div>
         </div>
