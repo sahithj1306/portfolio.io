@@ -807,6 +807,40 @@
       transform: translateY(-3px);
     }
     
+    /* Form Success and Error States */
+    .form-success,
+    .form-error {
+      text-align: center;
+      padding: 2rem;
+    }
+    
+    .form-success i,
+    .form-error i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .form-success i {
+      color: var(--secondary);
+    }
+    
+    .form-error i {
+      color: #ef4444;
+    }
+    
+    .form-success h3,
+    .form-error h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+    
+    .form-success p,
+    .form-error p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+    
     /* Footer */
     footer {
       background: var(--dark);
@@ -1622,7 +1656,14 @@
 
   <!-- JavaScript -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Add EmailJS script -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>
+    // Initialize EmailJS with your public key
+    (function() {
+      emailjs.init("is1axHh-saQttNbPk"); // Your EmailJS public key
+    })();
+    
     // Initialize AOS (Animate On Scroll)
     AOS.init({
       duration: 800,
@@ -1721,25 +1762,46 @@
       contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // In a real implementation, you would send the form data to a server
-        // For now, we'll just show a success message
+        // Show loading state
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.innerHTML;
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitButton.disabled = true;
+        
+        // Get form data
         const formData = new FormData(contactForm);
-        let formValues = {};
+        const templateParams = {
+          from_name: formData.get('name'),
+          from_email: formData.get('email'),
+          subject: formData.get('subject'),
+          message: formData.get('message')
+        };
         
-        for (let [key, value] of formData.entries()) {
-          formValues[key] = value;
-        }
-        
-        console.log('Form submitted:', formValues);
-        
-        // Show success message
-        contactForm.innerHTML = `
-          <div class="form-success">
-            <i class="fas fa-check-circle"></i>
-            <h3>Message Sent Successfully!</h3>
-            <p>Thank you for reaching out, ${formValues.name}. I'll get back to you soon.</p>
-          </div>
-        `;
+        // Send email using EmailJS
+        emailjs.send('service_usdrg0q', 'template_usdrg0q', templateParams)
+          .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            // Show success message
+            contactForm.innerHTML = `
+              <div class="form-success">
+                <i class="fas fa-check-circle"></i>
+                <h3>Message Sent Successfully!</h3>
+                <p>Thank you for reaching out, ${templateParams.from_name}. I'll get back to you soon.</p>
+              </div>
+            `;
+          })
+          .catch(function(error) {
+            console.log('FAILED...', error);
+            // Show error message
+            contactForm.innerHTML = `
+              <div class="form-error">
+                <i class="fas fa-exclamation-circle"></i>
+                <h3>Message Failed to Send</h3>
+                <p>Sorry, there was an error sending your message. Please try again later or contact me directly at sahith889@gmail.com</p>
+                <button onclick="location.reload()" class="btn btn-primary">Try Again</button>
+              </div>
+            `;
+          });
       });
     }
     
