@@ -1661,7 +1661,12 @@
   <script>
     // Initialize EmailJS with your public key
     (function() {
-      emailjs.init("is1axHh-saQttNbPk"); // Your EmailJS public key
+      try {
+        emailjs.init("is1axHh-saQttNbPk");
+        console.log("EmailJS initialized successfully");
+      } catch (error) {
+        console.error("EmailJS initialization failed:", error);
+      }
     })();
     
     // Initialize AOS (Animate On Scroll)
@@ -1777,8 +1782,11 @@
           message: formData.get('message')
         };
         
+        // Debug log
+        console.log('Sending email with parameters:', templateParams);
+        
         // Send email using EmailJS
-        emailjs.send('service_usdrg0q', 'template_usdrg0q', templateParams)
+        emailjs.send('service_aa74fef', 'template_usdrg0q', templateParams)
           .then(function(response) {
             console.log('SUCCESS!', response.status, response.text);
             // Show success message
@@ -1791,13 +1799,14 @@
             `;
           })
           .catch(function(error) {
-            console.log('FAILED...', error);
-            // Show error message
+            console.error('FAILED...', error);
+            // Show error message with more details
             contactForm.innerHTML = `
               <div class="form-error">
                 <i class="fas fa-exclamation-circle"></i>
                 <h3>Message Failed to Send</h3>
-                <p>Sorry, there was an error sending your message. Please try again later or contact me directly at sahith889@gmail.com</p>
+                <p>Error: ${error.text || 'Unknown error'}</p>
+                <p>Please try again later or contact me directly at sahith889@gmail.com</p>
                 <button onclick="location.reload()" class="btn btn-primary">Try Again</button>
               </div>
             `;
